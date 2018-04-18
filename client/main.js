@@ -1,6 +1,6 @@
 var GameScene = new Phaser.Scene('GameScene');
 GameScene.preload = function () {
-    this.load.setBaseURL('http://labs.phaser.io');
+    this.load.setBaseURL('https://labs.phaser.io');
     this.load.image('sky', '/assets/skies/wtf.png');
     this.load.image('particle', 'assets/particles/cloud.png');
     this.load.image('ball', 'assets/sprites/aqua_ball.png');
