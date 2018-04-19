@@ -1,22 +1,19 @@
 var express = require('express')
 var app = express()
+var clients = []
 
-var server = require('http').Server(app)
+function setupServer() {
+    // Start server
+    app.get('/', function(request, response) {
+        response.sendFile(__dirname + '/client/index.html')
+    })
+    app.use('/client', express.static(__dirname + '/client'))
 
-app.get('/', function(request, response) {
-    response.sendFile(__dirname + '/client/index.html')
-})
+    // Listen on Port 2000
+    server.listen(process.env.PORT || 2000)
+    console.log('Server Started on port 2000.')
+}
 
-app.use('/client', express.static(__dirname + '/client'))
-
-// Listen on Port 2000
-server.listen(process.env.PORT || 2000)
-console.log('Server Started')
-
-// IO connection
-var io = require('socket.io')(server, {})
-
-// Game Server
 function Client(socketId, name, playerId) {
     this.name = name
     this.socketId = socketId
@@ -28,8 +25,6 @@ function Client(socketId, name, playerId) {
     }
     this.setPlayerId(playerId)
 }
-
-var clients = []
 
 function requestFreePlayer() {
     // Todo: find first free player
@@ -46,6 +41,13 @@ function getPlayerBySocketId(id) {
     return clients.find(x => x.socketId === id)
 }
 
+// Main Application
+
+// Server Setup
+var server = require('http').Server(app)
+setupServer()
+// IO connection
+var io = require('socket.io')(server, {})
 
 // Listen for a connection request from any client
 io.sockets.on('connection', function(socket) {
