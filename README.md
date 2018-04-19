@@ -29,3 +29,7 @@ The application is hosted on Heroku and is automatically deployed from the maste
 
 Thank you <3
 (PR welcome - because <3 open source)
+
+### Code QA with ESLint
+* **EsLint(https://eslint.org/)**
+* I used a custom style config -> `.eslintrc.js`
