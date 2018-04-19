@@ -27,9 +27,10 @@ Run the game locally:
 ### Continuos Integration with Heroku
 The application is hosted on Heroku and is automatically deployed from the master branch.
 
-Thank you <3
-(PR welcome - because <3 open source)
-
 ### Code QA with ESLint
 * **EsLint(https://eslint.org/)**
 * I used a custom style config -> `.eslintrc.js`
+
+
+Thank you <3
+(PR welcome - because everyone loves open source)
